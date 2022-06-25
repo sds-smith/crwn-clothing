@@ -17,7 +17,7 @@ const Shop = () => {
             dispatch(setCategoriesMap(categoryMap))
         }
         getCategoriesMap()
-    }, [])
+    }, [dispatch])
 
     return (
         <Routes>

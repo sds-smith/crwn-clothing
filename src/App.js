@@ -24,7 +24,7 @@ const App =  () => {
         dispatch(setCurrentUser(user))
     })
     return unsubscribe
-  }, [])
+  }, [dispatch])
   
   return (
     <Routes>
