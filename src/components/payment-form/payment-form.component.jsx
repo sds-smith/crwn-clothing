@@ -7,7 +7,7 @@ import { selectCurrentUser } from "../../store/user/user.selector";
 import { resetCart } from "../../store/cart/cart.action";
 
 import {BUTTON_TYPE_CLASSES} from "../button/button.component";
-import { PaymentFormContainer, FormContainer, PaymentButton } from "./payment-form.styles";
+import { PaymentFormContainer, FormContainer, PaymentButton, TestMessage } from "./payment-form.styles";
 
 const PaymentForm = () => {
     const dispatch = useDispatch()
@@ -61,6 +61,10 @@ const PaymentForm = () => {
         <PaymentFormContainer >
             <FormContainer onSubmit={paymentHandler} >
                 <h2>Credit Card Payment:</h2>
+                <div className="message-container" >
+                    <TestMessage >Please use the following test card only:</TestMessage>
+                    <TestMessage >Card #: 4242 4242 4242 4242 | exp:04/24 | CVC: 242 | ZIP: 42424</TestMessage>
+                </div>
                 <CardElement />
                 <PaymentButton isLoading={isProcessingPayment} buttonType={BUTTON_TYPE_CLASSES.inverted} >Pay Now</PaymentButton>
             </FormContainer>
