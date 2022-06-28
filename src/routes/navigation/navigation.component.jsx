@@ -1,4 +1,4 @@
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import CartIcon from '../../components/cart-icon/cart-icon.component'
@@ -12,11 +12,20 @@ import { signOutStart } from '../../store/user/user.action'
 import { NavigationContainer, LogoContainer, NavLink, NavLinks } from './navigation.styles'
 
 const Navigation = () => {
+
   const currentUser = useSelector(selectCurrentUser)
   const isCartOpen = useSelector(selectIsCartOpen)
+  const [isHover, setIsHover] = useState(false)
 
   const dispatch = useDispatch()
-  const signOutUser = () => dispatch(signOutStart())
+  const signOutUser = () => {
+    setIsHover(false)
+    dispatch(signOutStart())
+  }
+
+  const handleHover = (e) => {
+    setIsHover(!isHover)
+  }
     
     return (
       <Fragment>
@@ -26,14 +35,13 @@ const Navigation = () => {
           </LogoContainer>  
 
           <NavLinks>
-            { currentUser && <NavLink to='/checkout'>logged in as {currentUser.displayName}</NavLink > }
             <NavLink to='/shop'>
                 SHOP
             </NavLink>
 
             { 
               currentUser ? (
-                <NavLink as='span' onClick={signOutUser} >SIGN OUT</NavLink>
+                <NavLink as='span' onMouseEnter={handleHover} onMouseOut={handleHover} onClick={signOutUser} >{isHover ? 'SIGN OUT' : currentUser.displayName }</NavLink>
               ) :
               (
                 <NavLink to='/auth'>
