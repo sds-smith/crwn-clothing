@@ -24,10 +24,13 @@ const Navigation = () => {
           <LogoContainer to='/'>
             <CrwnLogo />
           </LogoContainer>  
+
           <NavLinks>
+            { currentUser && <NavLink to='/checkout'>logged in as {currentUser.displayName}</NavLink > }
             <NavLink to='/shop'>
                 SHOP
             </NavLink>
+
             { 
               currentUser ? (
                 <NavLink as='span' onClick={signOutUser} >SIGN OUT</NavLink>
