@@ -16,6 +16,10 @@ export const FormContainer = styled.form`
     .message-container {
         margin-bottom: 20px;
     }
+
+    @media only screen and (max-width: 800px) {
+        min-width: unset;
+    }
 `
 
 export const PaymentButton = styled(Button)`
