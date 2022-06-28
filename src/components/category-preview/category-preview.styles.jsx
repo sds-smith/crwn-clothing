@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { HashLink } from 'react-router-hash-link';
 
 export const Preview = styled.div`
   display: grid;
@@ -12,7 +12,7 @@ export const Preview = styled.div`
   }
 `
 
-export const TitleLink = styled(Link)`
+export const TitleLink = styled(HashLink)`
   font-size: 28px;
   margin-bottom: 25px;
   cursor: pointer;
