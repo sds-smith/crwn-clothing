@@ -13,7 +13,7 @@ const PaymentForm = () => {
         if (!stripe || !elements) {
             return
         }
-        
+
 
     }
 
@@ -22,7 +22,7 @@ const PaymentForm = () => {
             <FormContainer >
                 <h2>Credit Card Payment:</h2>
                 <CardElement />
-                <Button buttonType={BUTTON_TYPE_CLASSES.inverted} >Pay Now</Button>
+                <Button buttonType={BUTTON_TYPE_CLASSES.inverted} onClick={paymentHandler} >Pay Now</Button>
             </FormContainer>
         </PaymentFormContainer>
     )
