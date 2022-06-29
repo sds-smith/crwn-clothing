@@ -5,6 +5,7 @@ import { SignInContainer, ButtonsContainer } from './sign-in-form.styles'
 import FormInput from '../form-input/form-input.component'
 import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component'
 import { emailSignInStart, googleSignInStart } from '../../store/user/user.action'
+import { useNavigate } from 'react-router-dom'
 
 const defaultFormFields = {
     email: '',
@@ -12,7 +13,7 @@ const defaultFormFields = {
 }
 
 const SignInForm = () => {
-
+    const navigate = useNavigate()
     const dispatch = useDispatch()
 
     const [formFields, setFormFields] = useState(defaultFormFields)
@@ -24,6 +25,7 @@ const SignInForm = () => {
 
     const signInWithGoogle = async () => {
         dispatch(googleSignInStart())
+        navigate('/')
     }
 
     const handleSubmit = async (event) => {
@@ -32,6 +34,7 @@ const SignInForm = () => {
         try {
             dispatch(emailSignInStart(email, password))
             resetFormFields()
+            navigate('/')
         } catch(error) {
             switch (error.code) {
                 case 'auth/wrong-password':

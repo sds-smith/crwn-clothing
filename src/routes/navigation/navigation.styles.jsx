@@ -39,5 +39,7 @@ export const NavLinks = styled.div`
 `
 export const NavLink = styled(Link)`
   padding: 10px 15px;
-  cursor: pointer
+  cursor: pointer;
+  width: 100px;
+  text-align: center;
 `
