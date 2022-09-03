@@ -23,7 +23,7 @@ const Navigation = () => {
     dispatch(signOutStart())
   }
 
-  const handleHover = (e) => {
+  const handleHover = () => {
     setIsHover(!isHover)
   }
     
