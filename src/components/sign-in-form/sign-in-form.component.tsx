@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, SyntheticEvent, ChangeEvent } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { SignInContainer, ButtonsContainer } from './sign-in-form.styles'
@@ -28,14 +28,14 @@ const SignInForm = () => {
         navigate('/')
     }
 
-    const handleSubmit = async (event) => {
+    const handleSubmit = async (event: SyntheticEvent) => {
         event.preventDefault()
 
         try {
             dispatch(emailSignInStart(email, password))
             resetFormFields()
             navigate('/')
-        } catch(error) {
+        } catch(error: any) {
             switch (error.code) {
                 case 'auth/wrong-password':
                     alert('incorrect password')
@@ -49,7 +49,7 @@ const SignInForm = () => {
         }
     }
 
-    const handleChange = (event) => {
+    const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
         const { name, value } = event.target;
         setFormFields({ ...formFields, [name] : value })
     }

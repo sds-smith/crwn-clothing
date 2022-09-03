@@ -1,6 +1,17 @@
+import { ChangeEvent } from 'react';
+
 import { FormInputLabel, Input, Group } from './form-input.styles'
 
-const FormInput = ({ label, ...otherProps }) => {
+type FormInputProps = {
+    label: string;
+    type: string;
+    required: boolean;
+    onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+    name: string;
+    value: string;
+}
+
+const FormInput = ({ label, ...otherProps }: FormInputProps) => {
     return (
         <Group>
             <Input { ...otherProps } /> 

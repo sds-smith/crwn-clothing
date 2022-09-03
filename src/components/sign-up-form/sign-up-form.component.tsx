@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, SyntheticEvent, ChangeEvent } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { SignUpContainer } from './sign-up-form.styles'
@@ -23,7 +23,7 @@ const SignUpForm = () => {
         setFormFields(defaultFormFields)
     }
 
-    const handleSubmit = async (event) => {
+    const handleSubmit = async (event: SyntheticEvent) => {
         event.preventDefault()
         if (password !== confirmPassword) {
             alert('passwords do not match')
@@ -33,7 +33,7 @@ const SignUpForm = () => {
         try {
             dispatch(signUpStart(email, password, displayName))
             resetFormFields()
-        } catch(error) {
+        } catch(error: any) {
             if (error.code === 'auth/email-already-in-use') {
                 alert('Cannot create user, email already in use')
             } else {
@@ -42,7 +42,7 @@ const SignUpForm = () => {
         }
     }
 
-    const handleChange = (event) => {
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
         setFormFields({ ...formFields, [name] : value })
     }
