@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 
 import ProductCard from '../../components/product-card/product-card.component'
 import Spinner from '../../components/spinner/spinner.component'
-import { CartItemType } from '../../components/cart-item/cart-item.component'
+import { CategoryItemType } from '../../store/categories/category.types' 
 import { selectCategoriesIsLoading, selectCategoriesMap } from '../../store/categories/category.selector'
 import { CategoryContainer, CategoryTitle } from './category.styles'
 
@@ -12,8 +12,9 @@ const Category = () => {
     const { category } = useParams()
     const categoriesMap = useSelector(selectCategoriesMap)
     const isLoading = useSelector(selectCategoriesIsLoading)
-
-    const [products, setProducts] = useState([])
+    
+    const productsArray: CategoryItemType[] = []
+    const [products, setProducts] = useState(productsArray)
 
     useEffect(() => {
         category && setProducts(categoriesMap[category])
@@ -28,7 +29,7 @@ const Category = () => {
                 ) : (
                     <CategoryContainer >
                         { products &&
-                            products.map((product: CartItemType) => <ProductCard key={product.id} product={product} />)
+                            products.map((product: CategoryItemType) => <ProductCard key={product.id} product={product} />)
                         }
                     </CategoryContainer>    
                 )

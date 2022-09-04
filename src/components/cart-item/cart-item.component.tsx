@@ -1,12 +1,6 @@
-import { CartItemContainer, ItemDetails } from './cart-item.styles'
+import { CartItemType } from '../../store/cart/cart.types';
 
-export type CartItemType = {
-    id: number;
-    imageUrl: string;
-    name: string;
-    price: number;
-    quantity?: number;
-}
+import { CartItemContainer, ItemDetails } from './cart-item.styles'
 
 type CartItemProps = {
     cartItem: CartItemType;

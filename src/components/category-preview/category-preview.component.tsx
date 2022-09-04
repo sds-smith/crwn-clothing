@@ -1,10 +1,10 @@
 import ProductCard from '../product-card/product-card.component'
-import { CartItemType } from '../cart-item/cart-item.component';
+import { CategoryItemType } from '../../store/categories/category.types'; 
 import  { CategoryPreviewContainer, Preview, TitleLink } from './category-preview.styles'
 
 type CategoryPreviewProps = {
     title: string;
-    products: CartItemType[];
+    products: CategoryItemType[];
 }
 
 const CategoryPreview = ({ title, products }: CategoryPreviewProps) => {

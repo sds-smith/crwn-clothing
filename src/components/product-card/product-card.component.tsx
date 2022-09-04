@@ -1,13 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux'
 
-import { CartItemType } from '../cart-item/cart-item.component'
+import { CategoryItemType } from '../../store/categories/category.types'
+import { CartItemType } from '../../store/cart/cart.types'
 import { selectCartItems } from '../../store/cart/cart.selector'
 import { addItemToCart } from '../../store/cart/cart.action'
 import { ProductCardContainer, AddToCartButton, Footer, Name, Price } from './product-card.styles'
 import { BUTTON_TYPE_CLASSES } from '../button/button.component'
 
 type ProductCardProps = {
-    product: CartItemType
+    product: CategoryItemType
 }
 
 const ProductCard = ({ product }: ProductCardProps) => {
@@ -15,7 +16,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
     const cartItems = useSelector(selectCartItems)
     const dispatch = useDispatch()
 
-    const addProductToCart = () => dispatch(addItemToCart(cartItems, product))
+    const addProductToCart = () => {
+        dispatch(addItemToCart(cartItems, product))
+    }
 
     return (
         <ProductCardContainer>
