@@ -2,6 +2,8 @@
 
 This project is a fully-functional, fully-scalable, enterprise level eCommerce Web App created with React 18 and React Router 6, employing React functional components, hooks, css-in-js via Styled Components, Redux-saga and Redux-persist, Firebase, secure sign-in with Google, and Stripe API.
 
+All code is fully type-protected with TypeScript.
+
 Users are able to create an account with username and password, or sign-in/ sign-out with Google authentication provider, browse categories and items, add/ delete items in cart or adjust quantities in checkout, securely pay with credit card via the Stripe API.  The app is set up in test mode on the Stripe API so no actual cards will be charged, but users may use the test card info provided at checkout to simulate the process.
 
 ## Project overview
