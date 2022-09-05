@@ -1,4 +1,4 @@
-import { createAction, withMatcher, Action, ActionWithPayload } from '../../utils/reducer/reducer.utils';
+import { createAction, withMatcher, ActionWithPayload } from '../../utils/reducer/reducer.utils';
 import { CART_ACTION_TYPES, CartItemType } from "./cart.types";
 import { CategoryItemType } from '../categories/category.types';
 
