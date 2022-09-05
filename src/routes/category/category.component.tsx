@@ -8,8 +8,12 @@ import { CategoryItemType } from '../../store/categories/category.types'
 import { selectCategoriesIsLoading, selectCategoriesMap } from '../../store/categories/category.selector'
 import { CategoryContainer, CategoryTitle } from './category.styles'
 
+type CategoryRouteParams = {
+    category: string;
+}
+
 const Category = () => {
-    const { category } = useParams()
+    const { category } = useParams<keyof CategoryRouteParams>() as CategoryRouteParams
     const categoriesMap = useSelector(selectCategoriesMap)
     const isLoading = useSelector(selectCategoriesIsLoading)
     
@@ -17,7 +21,7 @@ const Category = () => {
     const [products, setProducts] = useState(productsArray)
 
     useEffect(() => {
-        category && setProducts(categoriesMap[category])
+        setProducts(categoriesMap[category])
     }, [category, categoriesMap])
 
     return (

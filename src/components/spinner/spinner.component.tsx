@@ -6,6 +6,4 @@ const Spinner = () => (
         </SpinnerOverlay>
     )
 
-
-
 export default Spinner

@@ -5,7 +5,6 @@ import { AuthenticationContainer } from './authentication.styles'
 
 
 const SignIn = () => {
-
     return (
         <AuthenticationContainer>
             <SignInForm />

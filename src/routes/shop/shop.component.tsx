@@ -6,7 +6,6 @@ import Category from '../category/category.component'
 import { fetchCategoriesStart } from '../../store/categories/category.action'
 
 const Shop = () => {
-
     const dispatch = useDispatch()
 
     useEffect(() => {

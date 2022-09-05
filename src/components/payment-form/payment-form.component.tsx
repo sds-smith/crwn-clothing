@@ -1,5 +1,6 @@
-import { useState, SyntheticEvent } from "react";
+import { useState, FormEvent } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import { StripeCardElement } from "@stripe/stripe-js";
 import { useSelector, useDispatch } from "react-redux";
 
 import { selectCartTotal } from "../../store/cart/cart.selector";
@@ -8,6 +9,8 @@ import { resetCart } from "../../store/cart/cart.action";
 
 import {BUTTON_TYPE_CLASSES} from "../button/button.component";
 import { PaymentFormContainer, FormContainer, PaymentButton, TestMessage } from "./payment-form.styles";
+
+const isValidCardElement = (card: StripeCardElement | null): card is StripeCardElement => card !== null
 
 const PaymentForm = () => {
     const dispatch = useDispatch()
@@ -18,7 +21,7 @@ const PaymentForm = () => {
     const currentUser = useSelector(selectCurrentUser)
     const [isProcessingPayment, setIsProcessingPayment] = useState(false)
 
-    const paymentHandler = async (e: SyntheticEvent): Promise<void> => {
+    const paymentHandler = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
         e.preventDefault()
 
         if (!stripe || !elements) {
@@ -37,7 +40,7 @@ const PaymentForm = () => {
 
         const cardElement = elements.getElement(CardElement)
 
-        const paymentResult = cardElement && await stripe.confirmCardPayment(clientSecret, {
+        const paymentResult = isValidCardElement(cardElement) && await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: cardElement,
                 billing_details: {

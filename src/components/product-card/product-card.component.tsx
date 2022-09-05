@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 
 import { CategoryItemType } from '../../store/categories/category.types'
-import { CartItemType } from '../../store/cart/cart.types'
 import { selectCartItems } from '../../store/cart/cart.selector'
 import { addItemToCart } from '../../store/cart/cart.action'
 import { ProductCardContainer, AddToCartButton, Footer, Name, Price } from './product-card.styles'
