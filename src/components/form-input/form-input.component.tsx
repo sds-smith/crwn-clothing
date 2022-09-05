@@ -1,22 +1,25 @@
-import { ChangeEvent } from 'react';
+import { InputHTMLAttributes, FC, ChangeEvent } from 'react';
 
 import { FormInputLabel, Input, Group } from './form-input.styles'
 
 type FormInputProps = {
     label: string;
-    type: string;
-    required: boolean;
-    onChange: (event: ChangeEvent<HTMLInputElement>) => void;
-    name: string;
-    value: string;
-}
+} & InputHTMLAttributes<HTMLInputElement>
 
-const FormInput = ({ label, ...otherProps }: FormInputProps) => {
+const FormInput: FC<FormInputProps> = ({ label, ...otherProps }) => {
     return (
         <Group>
             <Input { ...otherProps } /> 
             {label && (
-            <FormInputLabel shrink={otherProps.value.length} >{label}</FormInputLabel>
+            <FormInputLabel 
+                shrink={Boolean(
+                    otherProps.value &&
+                    typeof otherProps.value === 'string' &&
+                    otherProps.value.length 
+                )}
+            >
+                {label}
+            </FormInputLabel>
             )}
         </Group>
 

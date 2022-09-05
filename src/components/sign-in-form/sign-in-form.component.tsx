@@ -1,4 +1,4 @@
-import { useState, SyntheticEvent, ChangeEvent } from 'react'
+import { useState, FormEvent, ChangeEvent } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { SignInContainer, ButtonsContainer } from './sign-in-form.styles'
@@ -28,7 +28,7 @@ const SignInForm = () => {
         navigate('/')
     }
 
-    const handleSubmit = async (event: SyntheticEvent) => {
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
         try {
